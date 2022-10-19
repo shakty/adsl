@@ -20,6 +20,11 @@ _*
 
 *.swp
 
+*.pdf
+*.png
+*.gexf
+
 .private
 private
 
+networks
