@@ -1,0 +1,11 @@
+query {
+  strategies {
+    id
+    author
+    version
+    schema
+    examples
+    about
+    spacesCount
+  }
+}
