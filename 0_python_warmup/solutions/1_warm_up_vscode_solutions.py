@@ -86,7 +86,7 @@ def notUsed():
 
 
 # EXERCISE 3. Producticity: Shorcuts and More.
-# /
+
 # Proficient programmers use the mouse as little as possible, and try
 # to do everything with the keyboard. It is actually possible to code
 # without using the mouse at all, but we are still far from that point.
