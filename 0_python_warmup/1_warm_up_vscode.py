@@ -1,4 +1,3 @@
-
 # All the text that follows a pound sign, that is #, is a comment.
 # Whatever follows the double slash on the same line is ignored by
 # the computer, it is just for you to read.
@@ -101,7 +100,7 @@ uselessCode = 'I am useless'
 
 # d. It would great if we could have a clone of ourselves, or even better 
 # multiple clones. It turns out that you can do it in VS Code! Highlight
-# the word "not". Then press Ctrl-D as many times as needed to highlight
+# the word "not". Then press Ctrl-Alt+Up/Down as many times as needed to highlight
 # all the next occurrences of the word "not". At every word "not" there is
 # a new cursor, so you can write multiple rows at once. Delete the word "not"
 # and replace the explanation mark with a sad face. Press Esc to eliminate
@@ -137,5 +136,3 @@ if (a*2 + (c/(b+1))) > 1:
 # keyboard shortcut. Yes, but which one? You can search for "Go to bracket"
 # in the menu of all VS Code commands. How do you open that menu? If you don't 
 # remember, go back to exercise 3.d.
-
-# c. Make sure to have the extension Rainbow Brackets installed for extra help.
