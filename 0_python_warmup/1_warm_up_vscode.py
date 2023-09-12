@@ -77,10 +77,10 @@ print(a)
 # Hint: follow the pattern.
 a = 1
 b = 2
-c.= 3
+c = 3
 
 # Hint: Check the tooltip.
-def notUsed()
+def not_used():
     print('Hello!')
 
 
@@ -93,7 +93,7 @@ def notUsed()
 
 # a. Comment out useless code with Ctrl-/. Notice if you applied the
 # command multiple times, it will uncomment/comment/uncomment... it.
-uselessCode = 'I am useless'
+# uselessCode = 'I am useless'
 
 # c. Cool. What other shorcuts are available? Here is a shortcut to find
 # them all. Ctrl-Shift-P. Look around and remember how to get here,
@@ -107,9 +107,9 @@ uselessCode = 'I am useless'
 # and replace the explanation mark with a sad face. Press Esc to eliminate
 # multiple cursors.
 
-catchMeIfYouCan1 = 'You did not catch me!'
-catchMeIfYouCan2 = 'You did not catch me!'
-catchMeIfYouCan3 = 'You did not catch me!'
+catchMeIfYouCan1 = 'You caught me :('
+catchMeIfYouCan2 = 'You caught me :('
+catchMeIfYouCan3 = 'You caught me :('
 
 
 # EXERCISE 4. Bracket Matching.
@@ -138,4 +138,3 @@ if (a*2 + (c/(b+1))) > 1:
 # in the menu of all VS Code commands. How do you open that menu? If you don't 
 # remember, go back to exercise 3.d.
 
-# c. Make sure to have the extension Rainbow Brackets installed for extra help.
