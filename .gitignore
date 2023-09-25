@@ -30,3 +30,5 @@ private
 networks
 
 *_orig.ipynb
+
+.env
