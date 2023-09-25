@@ -2,8 +2,6 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import mysql
-import mysql.connector
 
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
@@ -32,7 +30,6 @@ import scipy.stats as st
 
 # MAIN_DIR = pathlib.Path(__file__).parent.absolute()
 # print(MAIN_DIR)
-
 
 from dotenv import dotenv_values
 config = dotenv_values("../.env")
@@ -81,7 +78,8 @@ def snapshot_rest(query, params=None):
                             },
                             params={
                                 'query': query
-                            })
+                            },
+                            timeout=10)
 
     print(response)
     try:
@@ -109,14 +107,6 @@ def get_thegraph_client(endpoint):
 
 ## Utility functions.
 #####################
-
-def pd_read(what):
-    if what == 'proposals':
-        return pd_read_json('../4_power/data/snapshot_proposals.json')
-    elif what == 'votes':
-        return pd_read_dir('../4_power/data/votes/')
-    else:
-        raise Exception("What?" + what)
    
 
 def pd_read_json(file):
@@ -852,7 +842,7 @@ def save_json3(out, data_dir, file_template, save_counter):
 
 TALLY_ENDPOINT = "https://api.tally.xyz/query"
 
-def tally_rest(query, params=None):
+def tally_rest(query, params=None, timeout=10):
 
     response = requests.post(TALLY_ENDPOINT,
                             headers={                      
@@ -861,7 +851,8 @@ def tally_rest(query, params=None):
                             },
                             params={
                                 'query': query
-                            })
+                            },
+                            timeout=timeout)
 
     print(response)
     try:
@@ -880,92 +871,26 @@ tally = Client(
                                })
 )
 
-## MYSQL.
-#########
+## DESS NODE
+############
 
-def load_from_mysql(what="proposals"):
+def dess(query, params=None, timeout=10):
 
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user=config['MYSQL_USR'],
-        password=config['MYSQL_PWD'],
-        database="snapshot"
-    )
+    response = requests.post(config['DESS_NODE_URL'],
+                            headers={                      
+                                'accept': 'application/json',
+                                'Api-key': config['TALLY_KEY']
+                            },
+                            params={
+                                'query': query
+                            },
+                            timeout=timeout)
 
-    # print(mydb)
-
-    mycursor = mydb.cursor()
-
-    ## Let's extract the strategies.
-    mycursor.execute("SELECT * FROM " + what)
-
-    myresult = mycursor.fetchall()
-
-    if what == "proposals":
-
-        column_names = [ 
-            "id",
-            "ipfs",
-            "author",
-            "created",
-            "space",
-            "network",
-            "symbol",
-            "type",
-            "strategies",
-            "validation",
-            "plugins",
-            "title",
-            "body",
-            "discussion",
-            "choices",
-            "start",
-            "end",
-            "delegation",
-            "quorum",
-            "privacy",
-            "snapshot",
-            "app",
-            "scores",
-            "scores_by_strategy",
-            "scores_state",
-            "scores_total",
-            "scores_updated",
-            "votes" 
-        ]
-        
-    elif what == "votes":
-
-        column_names = [ 
-            "id", 
-            "ipfs", 
-            "voter", 
-            "created", 
-            "space", 
-            "proposal", 
-            "choice", 
-            "metadata", 
-            "reason", 
-            "app", 
-            "vp", 
-            "vp_by_strategy", 
-            "vp_state", 
-            "cb"
-        ]
-        
-    elif what == "spaces":
-
-        column_names = [ 
-            "id", 
-            "name", 
-            "settings", 
-            "verified",
-            "created_at", 
-            "updated_at"
-        ]
-        
-    else:
-        raise("Unknown what: " + what)
-
-    res = pd.DataFrame().from_records(myresult, columns=column_names)
-    return res
+    print(response)
+    try:
+        my_json = response.json()
+        return my_json['data']
+    except Exception as e:
+        print("Response content with error")
+        print(response.content)
+        return []
