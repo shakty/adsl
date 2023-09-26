@@ -106,6 +106,65 @@ def get_thegraph_client(endpoint):
     return client
 
 
+## TALLY.
+#########
+
+TALLY_ENDPOINT = "https://api.tally.xyz/query"
+
+def tally_rest(query, params=None, timeout=10):
+
+    response = requests.post(TALLY_ENDPOINT,
+                            headers={                      
+                                'accept': 'application/json',
+                                'Api-key': config['TALLY_KEY']
+                            },
+                            params={
+                                'query': query
+                            },
+                            timeout=timeout)
+
+    print(response)
+    try:
+        my_json = response.json()
+        return my_json['data']
+    except Exception as e:
+        print("Response content with error")
+        print(response.content)
+        return []
+
+
+tally = Client(
+    transport=AIOHTTPTransport(url=TALLY_ENDPOINT,
+                               headers={
+                                'Api-key': config['TALLY_KEY']
+                               })
+)
+
+## DESS NODE
+############
+
+def dess(query, params=None, timeout=10):
+
+    response = requests.post(config['DESS_NODE_URL'],
+                            headers={                      
+                                'accept': 'application/json',
+                                'Api-key': config['TALLY_KEY']
+                            },
+                            params={
+                                'query': query
+                            },
+                            timeout=timeout)
+
+    print(response)
+    try:
+        my_json = response.json()
+        return my_json['data']
+    except Exception as e:
+        print("Response content with error")
+        print(response.content)
+        return []
+
+
 ## Utility functions.
 #####################
    
@@ -837,61 +896,3 @@ def save_json3(out, data_dir, file_template, save_counter):
     df.to_json(data_dir + "/" + filename, orient="records")
 
     print(out_str)
-
-## TALLY.
-#########
-
-TALLY_ENDPOINT = "https://api.tally.xyz/query"
-
-def tally_rest(query, params=None, timeout=10):
-
-    response = requests.post(TALLY_ENDPOINT,
-                            headers={                      
-                                'accept': 'application/json',
-                                'Api-key': config['TALLY_KEY']
-                            },
-                            params={
-                                'query': query
-                            },
-                            timeout=timeout)
-
-    print(response)
-    try:
-        my_json = response.json()
-        return my_json['data']
-    except Exception as e:
-        print("Response content with error")
-        print(response.content)
-        return []
-
-
-tally = Client(
-    transport=AIOHTTPTransport(url=TALLY_ENDPOINT,
-                               headers={
-                                'Api-key': config['TALLY_KEY']
-                               })
-)
-
-## DESS NODE
-############
-
-def dess(query, params=None, timeout=10):
-
-    response = requests.post(config['DESS_NODE_URL'],
-                            headers={                      
-                                'accept': 'application/json',
-                                'Api-key': config['TALLY_KEY']
-                            },
-                            params={
-                                'query': query
-                            },
-                            timeout=timeout)
-
-    print(response)
-    try:
-        my_json = response.json()
-        return my_json['data']
-    except Exception as e:
-        print("Response content with error")
-        print(response.content)
-        return []
