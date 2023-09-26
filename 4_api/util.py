@@ -118,7 +118,7 @@ def tally_rest(query, params=None, timeout=10):
                                 'accept': 'application/json',
                                 'Api-key': config['TALLY_KEY']
                             },
-                            params={
+                            params = {
                                 'query': query
                             },
                             timeout=timeout)
