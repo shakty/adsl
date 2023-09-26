@@ -52,7 +52,8 @@ def etherscan(params={}):
                                 'accept': 'application/json',
                                 "User-Agent": ""
                             },
-                            params=params)
+                            params=params,
+                            timeout=10)
 
     print(response)
     return response.json()

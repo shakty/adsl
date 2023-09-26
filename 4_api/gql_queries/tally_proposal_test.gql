@@ -1,0 +1,43 @@
+query Proposals(
+  $chainId: ChainID!,
+  $sort: ProposalSort,
+  $pagination: Pagination
+) {
+  proposals(
+    chainId: $chainId,
+    proposalIds: "90786656233306599444783442367171420493182391933134906270328139870999449830964",
+    sort: $sort,
+    pagination: $pagination
+  ) {
+    id
+    title
+    description
+    start {
+      id
+      number
+      timestamp
+    }
+    end {
+      id
+      number
+      timestamp
+    }
+    eta
+    block {
+      id
+      number
+      timestamp
+    }
+    governanceId
+    governor {
+      id
+      type
+    } 
+    voteStats {
+      support
+      weight
+      votes
+      percent
+    }
+  }
+}

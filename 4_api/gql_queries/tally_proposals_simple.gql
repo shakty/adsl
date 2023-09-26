@@ -1,0 +1,108 @@
+query Proposals($chainId: ChainID!,
+                $pagination: Pagination,
+                $sort: ProposalSort,
+                $governors: [Address!]
+) {
+      proposals(
+            chainId: $chainId,
+            governors: $governors, 
+            pagination: $pagination, 
+            sort: $sort
+        ) {
+        id
+        title
+        description
+        start {
+            id
+            number
+            timestamp
+        }
+        end {
+            id
+            number
+            timestamp
+        }
+        eta
+        block {
+            id
+            number
+            timestamp
+        }
+        governanceId
+        governor {
+            id
+            name
+        }
+        # executable {
+        #     callDatas
+        #     signatures
+        #     targets
+        #     values
+        # }
+        proposer {
+            id
+            address
+            ens
+            twitter
+            name
+            bio
+            # participations
+            # picture
+            # activity
+        }
+        voteStats {
+          support
+          weight
+          votes
+          percent
+        }
+        statusChanges {
+            type
+            block {
+                id
+                number
+                timestamp
+            }
+            # txHash
+            # transaction {
+            #     id
+            #     block {
+            #         id
+            #         number
+            #         timestamp
+            #     }
+            # }
+        }
+        createdTransaction {
+            id
+            block {
+                id
+                number
+                timestamp
+            }
+        } 
+        # votes {
+        #     id
+        #     voter {
+        #         id
+        #         address
+        #         ens
+        #     }
+        #     hash
+        #     support
+        #     weight
+        #     transaction {
+        #         id
+        #         block {
+        #             id
+        #             number
+        #             timestamp
+        #         }
+        #     }
+        #     reason
+        #     proposal {
+        #         id
+        #     }
+        # }
+    }
+  }

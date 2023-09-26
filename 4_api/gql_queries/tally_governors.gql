@@ -1,0 +1,47 @@
+query Governors(
+                $chainIds: [ChainID!],
+                $pagination: Pagination,
+                $sort: GovernorSort,
+                $includeInactive : Boolean
+) {
+      governors(
+            chainIds: $chainIds,
+            pagination: $pagination, 
+            sort: $sort,
+            includeInactive: $includeInactive
+        ) {
+        id
+        name
+        slug
+        type
+        lastIndexedBlock {
+            id
+            number
+            timestamp
+        }
+        proposals {
+            id
+        }
+        proposalStats {
+            total
+            active
+            failed
+            passed
+        }
+        quorum
+        tokens {
+            id
+            type
+            name
+            symbol
+            supply
+            decimals
+            stats {
+                owners
+                voters
+                supply
+                delegatedVotingPower
+            }
+        }
+    }
+  }
