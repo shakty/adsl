@@ -38,29 +38,6 @@ config = dotenv_values("../.env")
 #################
 
 
-## ETHERSCAN
-############
-
-def etherscan(params={}):
-
-    ENDPOINT = 'https://api.etherscan.io/api'
-
-    params['apikey'] = config['ETHERSCAN']
-
-    response = requests.get(ENDPOINT,
-                            headers={
-                                'accept': 'application/json',
-                                "User-Agent": ""
-                            },
-                            params=params,
-                            timeout=10)
-
-    print(response)
-    return response.json()
-
-
-eth = Etherscan(config['ETHERSCAN'])
-
 ## SNAPSHOT
 ###########
 
@@ -91,6 +68,29 @@ def snapshot_rest(query, params=None):
         print(response.content)
         return []
     
+
+## ETHERSCAN
+############
+
+def etherscan(params={}):
+
+    ENDPOINT = 'https://api.etherscan.io/api'
+
+    params['apikey'] = config['ETHERSCAN']
+
+    response = requests.get(ENDPOINT,
+                            headers={
+                                'accept': 'application/json',
+                                "User-Agent": ""
+                            },
+                            params=params,
+                            timeout=10)
+
+    print(response)
+    return response.json()
+
+
+eth = Etherscan(config['ETHERSCAN'])
 
 ## THE GRAPH
 ############
