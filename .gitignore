@@ -34,3 +34,4 @@ networks
 .env
 
 votes_clean.csv.gz
+backbone_daos_network.gephi
