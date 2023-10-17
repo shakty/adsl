@@ -32,3 +32,5 @@ networks
 *_orig.ipynb
 
 .env
+
+votes_clean.csv.gz
