@@ -15,6 +15,7 @@ def gen_sw(N, K, R):
     ## Create a supposedly small world network.
     g = gt.circular_graph(N, K)
     gt.add_random_edges(g, R)
+    gt.remove_random_edges(g, R)
     return g
 
 def test_sw(g):
@@ -70,9 +71,9 @@ def compute_sigma(test_cc, test_apl, rnd_cc, rnd_apl):
 
 # N = Number of nodes in the circular graph
 # K = Number of edges for each node
-# R = Number of random edges
+# R = Number of random edges to add/remove
 N = 100
-K = 2
+K = 6
 R = 30
 g = gen_sw(N, K, R)
 
