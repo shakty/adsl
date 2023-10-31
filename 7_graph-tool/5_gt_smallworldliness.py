@@ -11,9 +11,9 @@ import os
 
 
 
-def gen_sw(N, R):
+def gen_sw(N, K, R):
     ## Create a supposedly small world network.
-    g = gt.circular_graph(N)
+    g = gt.circular_graph(N, K)
     gt.add_random_edges(g, R)
     return g
 
@@ -68,12 +68,14 @@ def compute_sigma(test_cc, test_apl, rnd_cc, rnd_apl):
     return (test_cc/rnd_cc) / (test_apl/rnd_apl)
 
 
-# N = Number of nodes in the graph
+# N = Number of nodes in the circular graph
+# K = Number of edges for each node
 # R = Number of random edges
 N = 100
+K = 2
 R = 30
-# g = gen_sw(N, R)
+g = gen_sw(N, K, R)
 
-g = gt.load_graph('../data/daos_network_pruned_edges_1k.gml')
+# g = gt.load_graph('../data/daos_network_pruned_edges_1k.gml')
 
 test_sw(g)
