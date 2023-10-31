@@ -13,7 +13,7 @@ import collections
 
 
 # Size Graph.
-N = 1000
+N = 5000
 
 # Probability of forming a tie.
 P = 0.2
