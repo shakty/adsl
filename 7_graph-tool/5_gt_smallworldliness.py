@@ -10,6 +10,7 @@ import time
 import os
 
 
+
 def gen_sw(N, R):
     ## Create a supposedly small world network.
     g = gt.circular_graph(N)
@@ -71,7 +72,8 @@ def compute_sigma(test_cc, test_apl, rnd_cc, rnd_apl):
 # R = Number of random edges
 N = 100
 R = 30
+# g = gen_sw(N, R)
 
-g = gen_sw(N, R)
+g = gt.load_graph('../data/daos_network_pruned_edges_1k.gml')
 
 test_sw(g)
