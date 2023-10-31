@@ -66,7 +66,7 @@ def compute_sigma(test_cc, test_apl, rnd_cc, rnd_apl):
 # N = Number of nodes in the graph
 # R = Number of random edges
 N = 1000
-R = 300
+R = 500
 
 g = gen_sw(N, R)
 
