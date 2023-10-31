@@ -20,7 +20,9 @@ def test_sw(g):
 
     g_n_vertices = g.num_vertices()
     g_n_edges = g.num_edges()
-    g_clustering = gt.global_clustering(g, sampled = True)
+    # For very large graphs use sampled = True
+    # g_clustering = gt.global_clustering(g, sampled = True)
+    g_clustering = gt.global_clustering(g)
     g_apl = get_avg_apl(g)
 
     print()
@@ -39,7 +41,9 @@ def test_sw(g):
 
     g_rnd_n_vertices = g_rnd.num_vertices()
     g_rnd_n_edges = g_rnd.num_edges()
-    g_rnd_clustering = gt.global_clustering(g_rnd, sampled = True)
+    # For very large graphs use sampled = True
+    # g_rnd_clustering = gt.global_clustering(g_rnd)
+    g_rnd_clustering = gt.global_clustering(g_rnd)
     g_rnd_apl = get_avg_apl(g_rnd)
 
     print()
@@ -65,8 +69,8 @@ def compute_sigma(test_cc, test_apl, rnd_cc, rnd_apl):
 
 # N = Number of nodes in the graph
 # R = Number of random edges
-N = 1000
-R = 500
+N = 100
+R = 30
 
 g = gen_sw(N, R)
 
