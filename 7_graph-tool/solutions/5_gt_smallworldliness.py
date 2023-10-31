@@ -44,7 +44,7 @@ def test_sw(g):
     ## Hint: we need to write a degree sampler function that returns the
     ## the degree of the nodes in the test graph.
 
-    # g_rnd = gt.random_graph(N, YOUR_FUNCTION, directed=False)
+    g_rnd = gt.random_graph(N, lambda: next(g_iter).out_degree(), directed=False)
 
     g_rnd_n_vertices = g_rnd.num_vertices()
     g_rnd_n_edges = g_rnd.num_edges()
