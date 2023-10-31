@@ -22,7 +22,7 @@ def test_sw(g):
     g_n_edges = g.num_edges()
     # For very large graphs use sampled = True
     # g_clustering = gt.global_clustering(g, sampled = True)
-    g_clustering = gt.global_clustering(g)
+    g_clustering = gt.global_clustering(g)[0]
     g_apl = get_avg_apl(g)
 
     print()
@@ -43,7 +43,7 @@ def test_sw(g):
     g_rnd_n_edges = g_rnd.num_edges()
     # For very large graphs use sampled = True
     # g_rnd_clustering = gt.global_clustering(g_rnd)
-    g_rnd_clustering = gt.global_clustering(g_rnd)
+    g_rnd_clustering = gt.global_clustering(g_rnd)[0]
     g_rnd_apl = get_avg_apl(g_rnd)
 
     print()
