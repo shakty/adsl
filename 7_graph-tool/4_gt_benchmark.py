@@ -13,7 +13,7 @@ import collections
 
 
 # Size Graph.
-N = 500
+N = 1000
 
 # Probability of forming a tie.
 P = 0.2
@@ -79,10 +79,10 @@ print('GT> K-core Time Passed: ', t2)
 
 
 # Compute centrality.
-t = time.perf_counter()
-centrality = nx.betweenness_centrality(H)
-t2 = time.perf_counter() - t
-print('NX> Largest Component Time passed ', t2)
+# t = time.perf_counter()
+# centrality = nx.betweenness_centrality(H)
+# t2 = time.perf_counter() - t
+# print('NX> Largest Component Time passed ', t2)
 
 ## GT
 #####
