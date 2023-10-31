@@ -82,7 +82,7 @@ print('NX> Largest Component Time passed ', t2)
 t = time.perf_counter()
 centrality = nx.betweenness_centrality(H)
 t2 = time.perf_counter() - t
-print('NX> Largest Component Time passed ', t2)
+print('NX> Betweenness Time passed ', t2)
 
 ## GT
 #####
@@ -97,6 +97,6 @@ print('NX> Largest Component Time passed ', t2)
 # t = time.perf_counter()
 # vpr_vertex, vpr_edge = gt.betweenness(gc)
 # t2 = time.perf_counter() - t
-# print('GT> Betweennes Time Passed: ',  t2)
+# print('GT> Betweenness Time Passed: ',  t2)
 
 
